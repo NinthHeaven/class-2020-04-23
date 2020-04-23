@@ -12,6 +12,7 @@ library(gganimate)
 library(tidyverse)
 library(readxl)
 library(magrittr)
+library(gganimate)
 ```
 
 This month, the [CenSoc Project](https://censoc.berkeley.edu/) at Berkeley released the first version of their individual-level data sets with information on almost everyone in the 1940 U.S. Census. The data is available to us. Today's project is to work with Big Data for real. (If you want to spend more time on machine learning, go through the examples in chapter 14.)
@@ -93,6 +94,18 @@ Hint: If you `group_by()` first, things go faster since you don't want to manipu
 
 Although you can go back and grab `dmonth`, you don't need to! You can work just with `x` and figure out the month by using the `month()` function.
 
+```{r sc3, echo=FALSE}
+
+seasons <- small %>%
+  mutate(dmonth = month(death_date),
+         season = ifelse(dmonth %in% c(10, 11, 12, 1, 2, 3), "Cold", "Warm"))
+
+seasons %<>%
+  group_by(age, season) %>%
+  summarise(deaths = n(age))
+
+ggplot(seasons, aes(death_date))
+```
 
 
 ## Challenge Problem
