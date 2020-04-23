@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(lubridate)
 library(gganimate)
 library(tidyverse)
+library(readxl)
 ```
 
 This month, the [CenSoc Project](https://censoc.berkeley.edu/) at Berkeley released the first version of their individual-level data sets with information on almost everyone in the 1940 U.S. Census. The data is available to us. Today's project is to work with Big Data for real. (If you want to spend more time on machine learning, go through the examples in chapter 14.)
@@ -32,6 +33,12 @@ Fill out [this form](https://censoc-download.demog.berkeley.edu/) to access the 
 * Calculate the average age at death by birth year. What two years have the highest average? Why? Without looking can you guess which years have the lowest average?
 
 * Which four months have the highest number of deaths? Why? What does that suggest about the influence of global warming on mortality?
+
+```{r sc1, echo=FALSE}
+
+raw <- read.csv("censoc_dmf_v1.csv")
+```
+
 
 
 ## Scene 2
